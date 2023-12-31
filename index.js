@@ -130,7 +130,7 @@ function showKeyboard() {
     hiddenInput.focus();
 }
 // Call showKeyboard when a button is clicked
-document.getElementById('showKeyboardButton').addEventListener('click', showKeyboard);
+document.getElementById('showKeyboardButton').addEventListener('touchstart', showKeyboard);
 
 function resetGame() {
     // Get a new random word
