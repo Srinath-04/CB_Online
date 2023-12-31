@@ -124,14 +124,6 @@ function getRandomWord(wordArray) {
     return wordArray[randomIndex];
 }
 
-// For phone keyboards
-function showKeyboard() {
-    const hiddenInput = document.getElementById('hiddenInput');
-    hiddenInput.focus();
-}
-// Call showKeyboard when a button is clicked
-document.getElementById('showKeyboardButton').addEventListener('touchstart', showKeyboard);
-
 function resetGame() {
     // Get a new random word
     rWord = getRandomWord(wordList);
@@ -150,14 +142,6 @@ function resetGame() {
     if (guesses.length > 0) {
         displayGuesses();
     }
-
-    // Programmatically trigger a click event on the hidden input element
-    //const hiddenInput = document.getElementById('hiddenInput');
-    //hiddenInput.focus(); // Set focus
-    //hiddenInput.click(); // Trigger click
-
-    // Focus the hidden input element to show the keyboard
-    //document.getElementById('hiddenInput').focus();
 }
 
 
