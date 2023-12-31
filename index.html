@@ -1,0 +1,45 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CB_Proto</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="center-left">
+    <!-- Single hidden input field -->
+    <input type="text" id="hiddenInput" class="hidden-input">
+
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <canvas id = "confetti"></canvas>
+    
+    <!-- Container for input boxes -->
+    <div class="inputBoxContainer">
+        <input type="text" class="inputBox" maxlength="1">
+        <input type="text" class="inputBox" maxlength="1">
+        <input type="text" class="inputBox" maxlength="1">
+        <input type="text" class="inputBox" maxlength="1">
+    </div>
+
+    <!-- Container for displaying guesses on the right side -->
+    <div id="guessesContainer"></div>
+
+    <button onclick="rules()">Rules</button>
+
+    <script>
+        function rules() {
+            alert(`Guess the 4 letter word!
+
+- There are no repeating letters
+- 1 cow = a letter is in the word in a different place
+- 1 bull = a letter is in the word in the same place
+- The game doesn't specify which letters are cows and bulls.
+
+Guess words and deduce the correct answer!`);
+        }
+    </script>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
