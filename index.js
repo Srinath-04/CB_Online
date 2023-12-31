@@ -124,6 +124,8 @@ function getRandomWord(wordArray) {
     return wordArray[randomIndex];
 }
 
+// For phone keyboards
+
 function resetGame() {
     // Get a new random word
     rWord = getRandomWord(wordList);
@@ -142,6 +144,8 @@ function resetGame() {
     if (guesses.length > 0) {
         displayGuesses();
     }
+    // Focus the hidden input element to show the keyboard
+    document.getElementById('hiddenInput').focus();
 }
 
 
