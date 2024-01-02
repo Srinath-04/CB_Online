@@ -20,6 +20,37 @@ body {
     top: -9999px;
 }
 
+#keyboard-container {
+    margin-top: 15px;
+    height: 100px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+
+.keyboard-row button {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 38px;
+    cursor: pointer;
+    background-color: antiquewhite;
+    color: black;
+    flex-grow: 1;
+    text-transform: uppercase;
+    margin-right: 6px;
+    border-radius: 4px;
+    user-select: none;
+    outline: none;
+}
+
+
 .inputBoxContainer {
     display: flex; /* Remove row-reverse to keep the regular order */
     justify-content: center;
@@ -60,37 +91,37 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    margin-right: 10px;
+    margin-right: 60px;
 }
 
 .guesses-container {
     margin-top: 10px;
     text-align: center;
+    align-items: center;
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 75%;
     transform: translate(-50%, -50%);
-    align-items: center;
-    width: auto;
-    max-width: 450px;
+    width: 390px;
+    /*max-width: 2000px;*/
     margin: 0 auto;
-    /*display: flex;*/
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     overflow-y: auto;
-    max-height: 650px;
+    max-height: 90%;
 
     background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha (fourth value) for transparency */
-    margin: 0;
-    padding: 0;
-    padding-left: 10px;
+    margin-right: 0;
+    padding: 0px;
+    padding-left: 60px;
     padding-top: 15px;
     border-radius: 20px;
 }
 
 .column {
-    display: inline-block;
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: 20px; 
@@ -104,21 +135,6 @@ body {
 }
 
 
-/* Media query for regular screens */
-@media screen and (min-width: 769px) {
-    .guesses-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .row {
-        display: flex;
-        justify-content: space-around;
-        width: 48%; /* Adjusted width for each column to leave some space between */
-        margin-bottom: 20px; /* Adjusted margin between columns */
-    }
-}
 
 /*Media query for smaller screens*/
 @media screen and (max-width: 768px) {
@@ -141,20 +157,20 @@ body {
     }
 
     .guesses-container {
-        width: 80%;
+        width: 350px;
         margin: 0 auto;
         margin-top: 10px;
         text-align: center;
+        align-items: center;
         position: absolute;
-        top: 55%;
+        top: 70%;
         left: 50%;
         transform: translate(-50%, -50%);
-        flex-direction: column; /* Display words in rows */
-        justify-content: space-between; /* Center horizontally */
-        align-items: center; /* Center vertically */
+        flex-direction: row;
         flex-wrap: wrap;
         overflow-y: auto;
-        max-height: 550px;
+        max-height: 50%;
+        padding-left: 0;
     }
 
     .column {
@@ -173,7 +189,8 @@ body {
 
     .row {
         display: flex;
-        justify-content: space-around;
-        margin-bottom: 10px; /* Adjusted margin between rows */
+        justify-content: space-between;
+        margin-bottom: 10px; 
+        margin-right: 0;
     }
 } 

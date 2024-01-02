@@ -275,6 +275,75 @@ function displayGuesses() {
     lastRow.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
+const keys = document.querySelectorAll('.keyboard-row button');
+
+// Define currentInputIndex outside the click event handler
+let currentInputIndex = 0;
+
+for (let i = 0; i < keys.length; i++) {
+    keys[i].onclick = ({ target }) => {
+        const key = target.dataset.key;
+        const hiddenInput = document.getElementById('hiddenInput');
+
+        // Move the currentInputIndex definition here
+        currentInputIndex = hiddenInput.value.length;
+
+        if (key === 'del' && currentInputIndex > 0) {
+            const removedLetter = hiddenInput.value.slice(-1).toUpperCase();
+            hiddenInput.value = hiddenInput.value.slice(0, -1);
+            enteredLetters.delete(removedLetter);
+            fillInputBoxes(); // Update the visible input boxes
+
+        } else if (key === 'enter' && currentInputIndex === 4) {
+            handleEnter();
+
+        } else if (/^[a-zA-Z]$/.test(key) && currentInputIndex < 4 && !enteredLetters.has(key.toUpperCase())) {
+            hiddenInput.value += key.toUpperCase();
+            enteredLetters.add(key.toUpperCase());
+            fillInputBoxes(); // Update the visible input boxes
+        }
+    }
+}
+
+function fillInputBoxes() {
+    inputBoxes.forEach((_, index) => {
+        const currentInput = document.getElementsByClassName('inputBox')[index];
+        const firstLetter = hiddenInput.value.charAt(index).toUpperCase();
+        inputBoxes[index] = firstLetter;
+        currentInput.value = firstLetter;
+    });
+}
+
+function handleEnter() {
+    // Check if all four letters are typed
+    if (inputBoxes.every(letter => letter !== '')) {
+        const combinedLetters = inputBoxes.join(''); // combined word
+
+        // Reset the input boxes, hidden input, and the set
+        inputBoxes.fill('');
+        document.getElementById('hiddenInput').value = '';
+        enteredLetters.clear();
+        fillInputBoxes(); // Update the visible input boxes
+
+        const ans = cowbull(rWord, combinedLetters);
+        const guessStr = combinedLetters + " : <br>"+ ans.cows + "🐄, " + ans.bull + "🐂";
+        guesses.push(guessStr);
+        displayGuesses();
+
+        // Scroll to the bottom after updating guesses
+        const guessesContainer = document.getElementById('guessesContainer');
+        guessesContainer.scrollTop = guessesContainer.scrollHeight;
+
+        // Compare the input to the random word
+        if (combinedLetters === rWord) {
+            alert('Congratulations! You guessed the word.');
+            jsConfetti.addConfetti();
+            resetGame();
+        }
+    }
+}
+
+
 resetGame();
 
 /* ----- */
