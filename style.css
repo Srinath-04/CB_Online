@@ -163,7 +163,7 @@ body {
         text-align: center;
         align-items: center;
         position: absolute;
-        top: 70%;
+        top: 47%;
         left: 50%;
         transform: translate(-50%, -50%);
         flex-direction: row;
@@ -192,5 +192,11 @@ body {
         justify-content: space-between;
         margin-bottom: 10px; 
         margin-right: 0;
+    }
+
+    #keyboard-container {
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 40px;
     }
 } 
