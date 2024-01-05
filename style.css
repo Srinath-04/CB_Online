@@ -195,7 +195,7 @@ body {
     }
 
     #keyboard-container {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         margin-bottom: 40px;
         max-width: 80%;
