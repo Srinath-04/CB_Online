@@ -184,7 +184,7 @@ function handleKeyPress(event) {
     if (/^[a-zA-Z]$/.test(event.key) && currentInputIndex < 4 && !enteredLetters.has(event.key.toUpperCase())) {
         const uppercaseKey = event.key.toUpperCase();
         hiddenInput.value += uppercaseKey;
-        enteredLetters.add(event.key.toUpperCase());
+        enteredLetters.add(uppercaseKey);
         handleHiddenInput();
     }
 }
@@ -214,11 +214,9 @@ function handleKeyDown(event) {
             enteredLetters.clear();
             handleHiddenInput();
 
-            //alert(rWord+','+combinedLetters);
             const ans = cowbull(rWord, combinedLetters);
             const guessStr = combinedLetters + " : <br>"+ ans.cows + "🐄, " + ans.bull + "🐂";
             guesses.push(guessStr);
-
             displayGuesses();
 
             // Scroll to the bottom after updating guesses
@@ -226,11 +224,11 @@ function handleKeyDown(event) {
             guessesContainer.scrollTop = guessesContainer.scrollHeight;
 
             // Compare the input to the random word
-            if (combinedLetters == rWord) {
+            if (combinedLetters === rWord) {
                 alert('Congratulations! You guessed the word.');
                 jsConfetti.addConfetti();
                 resetGame();
-            } 
+            }
         }
     }
 }
@@ -294,13 +292,18 @@ for (let i = 0; i < keys.length; i++) {
             enteredLetters.delete(removedLetter);
             fillInputBoxes(); // Update the visible input boxes
 
-        } else if (key === 'enter' && currentInputIndex === 4) {
-            handleEnter();
-
         } else if (/^[a-zA-Z]$/.test(key) && currentInputIndex < 4 && !enteredLetters.has(key.toUpperCase())) {
             hiddenInput.value += key.toUpperCase();
             enteredLetters.add(key.toUpperCase());
             fillInputBoxes(); // Update the visible input boxes
+            
+            // Check if all four letters are typed after filling the boxes
+            if (hiddenInput.value.length === 4) {
+                handleEnter();
+            }
+
+        } else if (key === 'enter' && currentInputIndex === 4) {
+            handleEnter();
         }
     }
 }

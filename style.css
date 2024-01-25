@@ -8,7 +8,7 @@ body {
     margin: 0;
     overflow: hidden;
 
-    background-image: url("./windmill_bg.jpeg");
+    background-image: url('./windmill_bg.jpeg');
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -29,7 +29,7 @@ body {
     display: flex;
     justify-content: center;
     width: 400px;
-    margin: 0 auto 8px;
+    margin: 0 0 8px 25px;
     touch-action: manipulation;
 }
 
@@ -194,10 +194,16 @@ body {
         margin-right: 0;
     }
 
+    .keyboard-row {
+        width: 90%; /* Set the width to 90% for smaller screens */
+        margin: 0 auto; /* Center the keyboard horizontally */
+        margin-bottom: 8px;
+    }
+
     #keyboard-container {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         margin-bottom: 40px;
-        max-width: 80%;
+        width: 100%;
     }
 } 
